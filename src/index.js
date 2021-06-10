@@ -1,15 +1,16 @@
 require('./models/User');
 require('./models/Generic');
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const genericRoutes = require('./routes/genericRoutes');
 const requireAuth = require('./middleware/requireAuth');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
 app.use(authRoutes);
 app.use(genericRoutes);
 
